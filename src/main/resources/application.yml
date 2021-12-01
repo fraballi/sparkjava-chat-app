@@ -1,0 +1,6 @@
+datasource:
+  url: jdbc:sqlite:chat.db
+jwt:
+  issuer: asapp
+  clientSecret: aSaPp.2021*
+  expirationSeconds: 3600

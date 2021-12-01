@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: asapp
+spec:
+  selector:
+    matchLabels:
+      app: asapp
+  template:
+    metadata:
+      labels:
+        app: asapp
+
+    spec:
+      containers:
+        - name: asapp
+          image: asapp/java-boilerplate
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 8080
+          imagePullPolicy: Never
+      restartPolicy: Always
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: asapp
+spec:
+  selector:
+    app: asapp
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: NodePort
