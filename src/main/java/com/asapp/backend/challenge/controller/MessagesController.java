@@ -20,6 +20,7 @@ public final class MessagesController {
         final var messageResource = JSONUtil.dataToModel(req.body(), MessageResource.class);
         final var messageResponse = messageService.create(messageResource);
 
+        rep.type("application/json");
         return JSONUtil.dataToJson(messageResponse);
     };
 
@@ -34,6 +35,8 @@ public final class MessagesController {
         final var limit = queryString.get("limit").integerValue();
 
         final var messages = messageService.getAll(recipient, start, limit);
+
+        rep.type("application/json");
         return JSONUtil.dataToJson(messages);
     };
 

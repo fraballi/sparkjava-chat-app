@@ -14,7 +14,7 @@ import spark.Route;
 
 public final class AuthController {
 
-    public static final Route LOGIN = (Request req, Response resp) -> {
+    public static final Route LOGIN = (Request req, Response rep) -> {
 
         final var userRepository = new UserRepository(ConnectionFactory.INSTANCE.get());
         final var authService = new AuthService(new JwtService(), new UserService(userRepository));
@@ -22,6 +22,7 @@ public final class AuthController {
         final var userResource = JSONUtil.dataToModel(req.body(), UserResource.class);
         final var loginResource = authService.login(userResource);
 
+        rep.type("application/json");
         return JSONUtil.dataToJson(loginResource);
     };
 
