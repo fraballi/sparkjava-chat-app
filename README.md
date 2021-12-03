@@ -5,7 +5,7 @@ This is a java based boilerplate which runs an HTTP Server configured to answer 
 src/main/java/com/asapp/backend/challenge/Application.java and if you go deeper to the Routes and Filters passed as second parameters, you will find a
 TODO comment where you are free to implement your solution.
 
-### How to run it (locally)
+### How to run com.asapp.backend.challenge.it (locally)
 
 ```
 ./gradlew run
@@ -24,7 +24,7 @@ TODO comment where you are free to implement your solution.
 Then run:
 ```shell
 kubectl apply -f k8s/deployment.yaml          # Wait for the pods to be ready
-kubectl port-forward service/asapp 8080:8080
+kubectl port-forward com.asapp.backend.challenge.service/asapp 8080:8080
 ```
 
 ### How to check the project is running correctly

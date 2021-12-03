@@ -17,8 +17,9 @@ public final class HealthController {
       final var databaseStatus = healthService.databaseStatus();
 
       final HealthResource healthResource = HealthResource.builder().status(databaseStatus).build();
-      return JSONUtil.dataToJson(healthResource);
 
+      rep.type("application/json");
+      return JSONUtil.dataToJson(healthResource);
    };
 
    private HealthController() {

@@ -20,6 +20,7 @@ public final class UsersController {
       final var userResource = JSONUtil.dataToModel(req.body(), UserResource.class);
       final var userId = service.create(userResource);
 
+      resp.type("application/json");
       return JSONUtil.dataToJson(userId);
    };
 
